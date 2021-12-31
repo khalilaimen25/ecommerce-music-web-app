@@ -1,0 +1,60 @@
+<%- include('head', { title: 'my custom page' }) -%>
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Sign in page</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/">Home</a></li>
+							<li class="active">Sign in</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Register Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">User Sign in</h3>
+							</div>
+							
+							<form action="" method="post">
+							<div class="form-group">
+								<input class="input" type="text" name="username" placeholder="Username" required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="password" name="password" placeholder="Password" required>
+							</div>
+							<p>You don't have an account ? <a href="/register">Register here .</a></p>
+							<div class="form-group">
+								<button type="submit" class="primary-btn btn-lg order-submit" style="width: 100%;">Sign in</button>
+							</div>
+							
+							</form>
+
+						</div>
+						<!-- /Register Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+<%- include('foot') -%>		

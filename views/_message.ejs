@@ -1,0 +1,42 @@
+<div id="messages" style="z-index: 100; position: fixed; top: 15%; right: 5%; width: 30%; opacity: 92%;">
+    <% Object.keys(messages).forEach(function (type){ %>
+        <!-- <span class="alert alert-<%=type%> alert-dismissible fade in" role="alert">
+            <button class="close" data-dismiss="alert" aria-label="close">&times;</button> -->
+           
+            <% messages[type].forEach(function(message){ %>
+                <!-- <strong style="font-size: 1.2em;"> <%= message %> khalil </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+                  <div class="alert alert-<%=type%> alert-dismissible fade in" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                    <p style="font-weight:bold; "><strong style="font-size: large;"><%=type%> Message : </strong><br>
+                        <%= message %>
+                    </p>
+                  </div>
+            <% })%>
+        <!-- </span> -->
+       
+    <% })%>
+   
+
+      <script>
+        $(".alert").delay(4000).fadeTo(1000,0).slideUp(200, function() {
+              $(".alert").alert('close');
+        });
+
+    </script>
+</div> 
+
+
+
+
+
+
+
+
+
+   
+    
+
+   

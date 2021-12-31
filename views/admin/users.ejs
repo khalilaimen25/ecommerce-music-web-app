@@ -1,0 +1,63 @@
+<%- include('admin_head', { title: 'all users' }) -%>	 
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">All Users</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/admin">Admin</a></li>
+							<li class="active">Users</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<div class="section">
+			<div class="container">
+
+				<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th scope="col">#</th>
+						<th scope="col">Username</th>
+						<th scope="col">Firstname</th>
+						<th scope="col">Lastname</th>
+						<th scope="col">Email</th>
+						<th scope="col">Phone</th>
+						<th scope="col">Address</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<% var i = 0 %> 	
+					<% users.forEach(user => {  %> 
+					<% i++ %> 	
+					  <tr>
+						<th scope="row"><%= i %></th>
+						<td><%= user.username %></td>
+						<td><%= user.firstname %></td>
+						<td><%= user.lastname %></td>
+						<td><%= user.email %></td>
+						<td><%= user.phone %></td>
+						<td><%= user.address+', '+user.city+', '+user.zipcode+', '+user.country %></td>
+						<td>
+							<form action="/admin/user/<%= user.id %>" method="post" onSubmit="return confirm('User will be delete from data base')">
+								<button class="btn btn-danger delete_user"> Delete</button></td>
+							</form>
+					  </tr>
+					
+					<% }) %> 
+
+					</tbody>
+				</table>	  
+			</div>
+		</div>
+
+<%- include('admin_foot') -%>		

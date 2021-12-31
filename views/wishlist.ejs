@@ -1,0 +1,100 @@
+<%- include('head', { title: 'cart page' }) -%>
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">My Wishlist</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/">Home</a></li>
+							<li class="active">Wishlist</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+                <div class="section-title">
+                    <h4 class="title">You have a total of <%= wishlist.length %> items in your wishlist</h4>
+                </div>
+                <!-- row -->
+				<div class="row">
+                    <% wishlist.forEach( product => { %> 
+                        <div class="col-md-3 col-xs-5">
+                            <div class="product">
+                                <div class="product-img text-center">
+                                    <img src="/public/img/<%= product.image %>" alt="" style="width: 40%;">
+                                    <div class="product-label">
+                                        <% if(product.promotion !== 0){ %> 
+                                        <span class="sale">-<%= product.promotion %>%</span>
+                                        <% } %> 
+                                        <% if(product.in_stock === 0){ %> 
+                                            <span class="new">Out of Stock</span>
+                                        <% } %> 
+                                        <!-- <span class="new">NEW</span> -->
+                                    </div>
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category"><a href="/store/category/<%= product.category %>"><%= product.category %></a></p>
+                                    <p class="product-category"><a href="/store/category/<%= product.category %>/<%= product.subcategory %>"><%= product.subcategory %></a></p>
+                                    <h5 class="product-name"><a href=""><%= product.brand %></a></h5>
+                                    <h3 class="product-name"><a href="/store/product/<%= product.id %>"><%= product.name %></a></h3>
+                                    <h4 class="product-price"><%= Math.round(product.new_price) %> € <% if(product.promotion !== 0){ %><del class="product-old-price"><%= product.price %> €</del><%}%></h4>
+                                    <div class="product-rating">
+                                        <!-- <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i> -->
+                                    </div>
+                                    
+                                        
+                                        <form action="/wishlist/<%= product.id %>" method="">
+                                            <div class="product-btns">
+                                                <button type="submit"><i class="fa fa-trash"></i><span class="tooltipp">Delete from wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </form>                                        
+                                    
+                                </div>
+                                <% if(product.in_stock !== 0 ){ %> 
+                                <div class="add-to-cart">
+                                    <form action="/cart" method="post">
+                                        <input type="hidden" name="pid" value="<%= product.id %>">
+                                        <input type="hidden" name="image" value="<%= product.image %>">
+                                        <input type="hidden" name="new_price" value="<%= product.new_price %>">
+                                        <input type="hidden" name="price" value="<%= product.price %>">
+                                        <input type="hidden" name="name" value="<%= product.name %>">
+                                        <input type="hidden" name="category" value="<%= product.category %>">
+
+                                        <% if(user){ %> 
+                                        <input type="hidden" name="uid" value="<%= user.id %>">
+                                        <% } %> 
+                                        <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    </form>
+                                </div>
+                                <% } %> 
+                            </div>
+                        </div>
+                    <% }) %> 
+                    
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+       
+
+
+<%- include('foot') -%>		

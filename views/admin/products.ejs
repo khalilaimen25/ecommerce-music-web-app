@@ -1,0 +1,72 @@
+<%- include('admin_head', { title: 'all products' }) -%>	 
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">All products</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/admin">Admin</a></li>
+							<li class="active">Products</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<h2><a href="/admin/product">Add new product</a></h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="container">
+
+				<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th scope="col">#</th>
+						<th scope="col">Name</th>
+						<th scope="col">Price</th>
+						<th scope="col">Category</th>
+						<th scope="col">SubCategory</th>
+						<th scope="col">Brand</th>
+						<th scope="col">#Sells</th>
+						<th scope="col">#Stock</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<% var i = 0 %> 	
+					<% products.forEach(product => {  %>
+					<% i++ %> 	 
+					  <tr>
+						<th scope="row"><%= i %></th>
+						<td><a href="/store/product/<%= product.id %>"><%= product.name %></a></td>
+						<td><%= product.price %></td>
+						<td><%= product.category %></td>
+						<td><%= product.subcategory %></td>
+						<td><%= product.brand %></td>
+						<td><%= product.sells %></td>
+						<td><%= product.in_stock %></td>
+						<form action="/admin/product/<%= product.id %>" method="get">
+							<td><button type="submit" class="btn btn-primary">Update</button></td>
+						</form>
+						<td><button class="btn btn-danger delete_product" value="<%= product.id %> ">Delete</button></td>
+
+					  </tr>
+					<% }) %> 
+
+					</tbody>
+				</table>	  
+			</div>
+		</div>
+
+<%- include('admin_foot') -%>		

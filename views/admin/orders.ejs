@@ -1,0 +1,67 @@
+<%- include('admin_head', { title: 'all orders' }) -%>	 
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">All orders</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/admin">Admin</a></li>
+							<li class="active">Orders</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<div class="section">
+			<div class="container">
+				<% i = 0 %> 
+				<% orders.forEach( order => { %> 
+				<% i++ %> 	
+				<div class="row" style="border:1px solid rgb(141, 139, 139); border-radius: 20px; padding: 20px; margin-bottom: 20px;">
+					<h3 class="col-md-12">Order #<%= i%></h3>
+					<p class="col-md-12"><%= order[0].date %></p>
+					<div class="col-md-4">
+						<h4 style="color: rgb(233, 109, 7);"><%= order[0].username %></h4>
+						<ul style="list-style-type:disc">
+							<li>Shipping to : <strong style="text-transform: capitalize;"><%= order[0].fullname %> </strong></li>
+							<li>Address : <strong style="text-transform: capitalize;"><%= order[0].fulladdress %></strong></li>
+							<li>Phone number : <strong><%= order[0].phone %></strong></li>
+							<li>Email : <strong><%= order[0].email %></strong></li>
+						</ul>
+					</div> 
+					<div class="col-md-5">
+						<h4>Products</h4>
+						<% subtotal = 0 %> 
+						<% order.forEach( product => { %> 
+							<% subtotal = subtotal +  product.price %>
+							<ul style="list-style-type:disc">
+								<li><%= product.name %> / <strong>x<%= product.product_qnt %></strong> / <strong><%= product.price %> €</strong></li>
+							</ul>
+							
+						<% }) %> 	
+									
+					</div> 
+					<div class="col-md-3">
+						<h4>Subtotal</h4>
+						<h3 style="color: rgb(233, 109, 7);"><%= subtotal %> €</h3>
+					</div> 
+					<div class="col-md-12" style="margin-top: 10px;">
+						<form action="/admin/order" method="post">
+							<input type="hidden" name="date" value="<%= order[0].date %>">
+							<button type="submit" class="primary-btn btn-sm order-submit">Confirm order</button>
+						</form>
+					</div>
+				</div>
+				<% }) %> 
+			</div>
+		</div>
+
+<%- include('admin_foot') -%>		

@@ -1,0 +1,111 @@
+<%- include('admin_head', { title: 'home page' }) -%>	 
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Update product</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">Admin</a></li>
+							<li class="active">Update product</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Register Details -->
+						<div class="billing-details">
+							<div class="section-title col-md-12">
+								<h3 class="title">Product information</h3>
+							</div>
+							<form action="" method="post">
+							<div class="form-group col-md-12">
+								<label for="name">Name</label>
+								<input class="input" type="text" name="name" placeholder="Product name*" required value="<%= product.name %> ">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="">Category</label>
+								<input class="input" type="text" name="category" placeholder="Category*" value="<%= product.category %>" required>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="">Subcategory</label>
+								<input class="input" type="text" name="subcategory" placeholder="Subcategory*" value="<%= product.subcategory %>" required>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="">Price</label>
+								<input class="input" type="text" name="price" placeholder="Price*" value="<%= product.price %>" required>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="">Promo</label>
+								<input class="input" type="text" name="promo" placeholder="Promo*" value="<%= product.promotion %>" required>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="">In Stock</label>
+								<input class="input" type="text" name="in_stock" placeholder="In Stock*" value="<%= product.in_stock %>" required>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="">Brand</label>
+								<input class="input" type="text" name="brand" placeholder="Brand*" value="<%= product.brand %>" required>
+							</div>
+							<div class="col-md-2">
+								<img src="/public/img/<%= product.image %>" alt="" width="40%">
+							</div>
+							<div class="form-group col-md-10">
+								<label for="imageupload">choose product image*</label>
+    							<input type="file" class="form-control-file" name="image" id="imageupload" value="<%= product.image %>">
+								<p><%= product.image %></p> 
+							</div>
+							<div class="form-group col-md-12">
+								<label for="imageupload">choose product sound*</label>
+    							<input type="file" class="form-control-file" name="sound" id="imageupload" value="<%= product.sound %>">
+								<p><%= product.sound %></p> 
+								<audio controls>
+									<source src="/public/sound/<%= product.sound %>">
+								</audio>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="">Product Video</label>
+								<input class="input" type="text" name="video" placeholder="Video URL*" value="<%= product.video %>">
+							</div>
+							
+							<div class="form-group col-md-12">
+								<label for="">Description</label>
+								<textarea class="input" type="text" name="description" placeholder="Descriptions" required><%= product.description %></textarea>
+							</div>
+
+							<input type="hidden" name="o_image" value="<%= product.image %>">
+							<input type="hidden" name="o_sound" value="<%= product.sound %>">
+							
+							<div class="form-group col-md-12">
+								<button type="submit" class="primary-btn btn-lg order-submit " style="width: 100%;">Update Product</button>
+							</div>
+							
+							</form>
+
+						</div>
+						<!-- /Register Details -->
+					</div>	
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+<%- include('admin_foot') -%>		

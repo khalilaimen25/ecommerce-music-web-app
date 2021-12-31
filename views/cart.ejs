@@ -1,0 +1,101 @@
+<%- include('head', { title: 'cart page' }) -%>
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">My Cart</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="/">Home</a></li>
+							<li class="active">Cart</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+                <div class="section-title">
+                    <h4 class="title">You have a total of <%= cart.length %> items in your card</h4>
+                </div>
+                <!-- row -->
+				<div class="row">
+                    <% total = 0 %>
+                    <% cart.forEach( product => { %> 
+                    <% total += (product.new_price * product.product_qnt) %>    
+                    <div class="col-md-3 col-xs-4">
+                        <div class="product">
+                            <div class="product-img text-center">
+                                <img src="/public/img/<%= product.image %> " alt="" style="width: 40%;">
+                                <div class="product-label">
+                                    <% if(product.promotion !== 0){ %> 
+                                        <span class="sale">-<%= product.promotion %>%</span>
+                                    <% } %> 
+                                    <!-- <span class="new">NEW</span> -->
+                                </div>
+                            </div>
+                            <div class="product-body">
+                        
+                                <h3 class="product-name"><%= product.product_qnt %> <a href="/store/product/<%= product.id %> "><%= product.name %></a></h3>
+                                <h4><%= product.new_price * product.product_qnt %> € <% if(product.promotion !== 0){ %><del class="product-old-price"><%= product.price * product.product_qnt %> €</del><%}%></h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <form action="/cart/<%= product.id %>" method="">
+                                <div class="product-btns">
+                                    <button type="submit"><i class="fa fa-trash"></i><span class="tooltipp">Delete from cart</span></button>
+                                </div>
+                                </form>
+                                
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <% }) %> 
+                    
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /SECTION -->
+        <div class="section">
+            <div class="container">
+                <div class="section-title">
+                    <div>
+                        <h1>Your items cost <span style="color: rgb(241, 158, 62);"><%= total %> €</span> In Total</h1> 
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <form action="/checkout" method="">
+                        <% if(total !== 0){ %>
+                        <div class="col-md-6">
+                            <button type="submit" class="primary-btn order-submit">Go to checkout <i class="fa fa-arrow-circle-right"></i></button>
+                        </div>
+                        <% } %> 
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+<%- include('foot') -%>		

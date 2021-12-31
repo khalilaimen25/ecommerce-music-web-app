@@ -1,0 +1,94 @@
+<%- include('admin_head', { title: 'Dashboard' }) -%>	 
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Dashboard</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">Admin</a></li>
+							<li class="active">Dashboard</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Admin Dashboard</h3>	
+						</div>
+					</div>
+
+					<div class="col-md-3 col-xl-3">
+						<a href="/admin/products" >
+						<div class="card bg-c-blue order-card">
+							<div class="card-block">
+								<h3 class="m-b-20">All Products</h3>
+								<h2 class="text-right"><i class="fa fa-shopping-bag f-left"></i><span><%= total_products %></span></h2>
+								<a href="/admin/products" class="stretched-link">Show all products</a>
+							</div>
+						</div>
+						</a>
+					</div>
+
+					<div class="col-md-3 col-xl-3">
+						<a href="/admin/orders">
+						<div class="card bg-c-green order-card">
+							<div class="card-block">
+								<h3 class="m-b-20">Orders Received</h3>
+								<h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span><%= total_orders %></span></h2>
+								<a href="/admin/orders" class="stretched-link">Show Orders</a>
+							</div>
+						</div>
+						</a>
+					</div>
+
+					<div class="col-md-3 col-xl-3">
+						<a href="/admin/users">
+						<div class="card bg-c-yellow order-card">
+							<div class="card-block">
+								<h3 class="m-b-20">Users accounts</h3>
+								<h2 class="text-right"><i class="fa fa-users f-left"></i><span><%= total_users %></span></h2>
+								<a href="/admin/users" class="stretched-link">Show Users</a>
+							</div>
+						</div>
+						</a>
+					</div>
+
+					<div class="col-md-3 col-xl-3">
+						<div class="card bg-c-pink order-card">
+							<div class="card-block">
+								<h3 class="m-b-20">Total sales</h3>
+								<h2 class="text-right"><i class="fa fa-money f-left"></i><span><%= Math.floor(total_sales * 100) / 100 %></span>€</h2>
+								<a class="stretched-link">total sales</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">				
+				<!-- row -->
+				
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+<%- include('admin_foot') -%>		
